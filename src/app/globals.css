@@ -1,0 +1,130 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 210 40% 98%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 210 40% 98%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 206 100% 50%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 260 85% 65%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.75rem;
+    --success: 142.1 76.2% 36.3%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 206 100% 50%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 260 85% 65%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --success: 142.1 70.6% 45.3%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image: linear-gradient(to bottom right, hsl(var(--background)), hsl(var(--secondary)));
+  }
+}
+
+@layer utilities {
+  .progress-bar-green {
+    @apply bg-gradient-to-r from-green-400 to-green-500;
+  }
+  .progress-bar-yellow {
+    @apply bg-gradient-to-r from-yellow-400 to-yellow-500;
+  }
+  .progress-bar-orange {
+    @apply bg-gradient-to-r from-orange-400 to-orange-500;
+  }
+  .progress-bar-red {
+    @apply bg-gradient-to-r from-red-400 to-red-500;
+  }
+
+  .text-gradient-blue {
+    @apply bg-gradient-to-r from-blue-500 to-sky-400 text-transparent bg-clip-text;
+  }
+
+  .card-glass {
+    @apply bg-card/50 backdrop-blur-lg border border-slate-100/30 dark:border-slate-800/30 shadow-xl;
+  }
+  
+  @keyframes border-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes toast-progress {
+    0% {
+      width: 100%;
+    }
+    100% {
+      width: 0%;
+    }
+  }
+
+  .scanner-active {
+    background: linear-gradient(to right, hsl(var(--muted)), hsl(var(--destructive)/ 0.8), hsl(var(--muted)));
+    background-size: 200% 100%;
+    animation: border-animation 1.5s linear infinite;
+  }
+  
+  .scanner-success {
+    background: hsl(var(--success));
+    transition: background 0.3s ease-in-out;
+  }
+
+  @keyframes color-cycle {
+    0%, 100% { color: #3498db; } /* Blue */
+    20% { color: #e74c3c; } /* Red */
+    40% { color: #2ecc71; } /* Green */
+    60% { color: #f39c12; } /* Orange */
+    80% { color: #9b59b6; } /* Purple */
+  }
+
+  .logo-iq {
+    animation: color-cycle 10s linear infinite;
+  }
+}
